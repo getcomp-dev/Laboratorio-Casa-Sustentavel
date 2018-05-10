@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 //Logger
 app.use(logger('dev'));
 
-app.use(jwt({secret: config.jwt.secret, requestProperty: 'auth'}).unless({path: [{ url: '/authenticate', methods: ['POST']  }, { url: '/usuario', methods: ['POST']  }]}));
+app.use(jwt({secret: config.jwt.secret, requestProperty: 'auth'}).unless({path: [{ url: '/authenticate', methods: ['POST']  }, { url: '/usuario', methods: ['POST']  }, { url: '/ambiente', methods: ['GET']  }]}));
 
 //Mapping routes
 app.use('/authenticate', authenticateRoute);
