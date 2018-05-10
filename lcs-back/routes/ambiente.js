@@ -1,5 +1,6 @@
 const models        = require('../models/index'),
-    router          = require('express').Router();
+    router          = require('express').Router(),
+    CustomError     = require('../library/CustomError');
 
 router.get('/', function (req, res, next) {
     models.Ambiente.findAll({
@@ -23,10 +24,38 @@ router.get('/:id([0-9]+)', function (req, res, next) {
             id: req.params.id
         }
     }).then(function (ambiente) {
+        if (!ambiente)
+            throw new CustomError(400, 'Ambiente inválido');
+
         res.send({
             success: true,
             message: 'Ambiente',
             Ambiente: ambiente
+        });
+    }).catch(function (err) {
+        return next(err, req, res);
+    });
+});
+
+router.post('/:id([0-9]+)/configuracao/add', function (req, res, next) {
+    models.Ambiente.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(function (ambiente) {
+        if (!ambiente)
+            throw new CustomError(400, 'Ambiente inválido');
+
+        let newConf = ambiente.configuracao;
+        newConf.push({ 'nome': req.body.nome, 'valor': false});
+
+        return ambiente.updateAttributes({
+            configuracao: newConf
+        });
+    }).then(function () {
+        res.send({
+            success: true,
+            message: 'Configuracao adicionada'
         });
     }).catch(function (err) {
         return next(err, req, res);
