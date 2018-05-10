@@ -1,7 +1,6 @@
 'use strict';
-
 module.exports = function (sequelize, DataTypes) {
-    let LogEstado = sequelize.define('LogEstado', {
+    let LogClimatico = sequelize.define('LogClimatico', {
         temperatura: {
             type: DataTypes.FLOAT,
             allowNull: true
@@ -23,14 +22,14 @@ module.exports = function (sequelize, DataTypes) {
         updatedAt: false
     });
 
-    LogEstado.associate = function (models) {
-        LogEstado.hasMany(models.Resposta, {
+    LogClimatico.associate = function (models) {
+        LogClimatico.hasMany(models.Resposta, {
             foreignKey: {
-                name: 'LogEstado',
+                name: 'LogClimatico',
                 allowNull: false
             }
         });
     };
 
-    return LogEstado;
+    return LogClimatico;
 };

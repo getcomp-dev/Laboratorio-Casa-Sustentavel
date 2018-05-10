@@ -31,7 +31,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
 
-        Ambiente.hasMany(models.LogEstado, {
+        Ambiente.hasMany(models.LogClimatico, {
             foreignKey: {
                 name: 'Ambiente',
                 allowNull: true
