@@ -1,0 +1,18 @@
+{
+  "name": "printer-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chico Rei",
+  "license": "ISC",
+  "dependencies": {
+    "node-thermal-printer": "^4.1.0",
+    "printer": "^0.2.2",
+    "socket.io": "^2.2.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.10.0"
+  }
+}
