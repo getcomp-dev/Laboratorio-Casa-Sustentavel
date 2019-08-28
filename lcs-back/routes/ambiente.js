@@ -49,7 +49,7 @@ router.post('/:id([0-9]+)/configuracao', function (req, res, next) {
         let newConf = ambiente.configuracao;
         newConf.push({ 'nome': req.body.nome, 'valor': false});
 
-        return ambiente.updateAttributes({
+        return ambiente.update({
             configuracao: newConf
         });
     }).then(function () {

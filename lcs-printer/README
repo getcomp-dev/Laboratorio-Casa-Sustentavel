@@ -1,0 +1,25 @@
+Softwares necessários:
+
+- Python 2.7
+- Node (testado com v12)
+
+Configurações:
+- npm install -g node-gyp (No powershell do windows como admin)
+- npm install windows-build-tools -g (No powershell do windows como admin)
+- Baixar o Advanced Printer Driver (TM-T20) site da Epson
+- npm install
+
+Para rodar o script sempre no windows:
+
+- Instalar o monitor (que mantem o script rodando)
+npm install pm2 -g
+
+- Instalar o pacote que inicia o monitor junto com o Sistema Operacional
+npm install pm2-windows-startup -g
+pm2-startup install
+
+- Inicie o script que deseja que fique rodando
+pm2 start app.js
+
+- Use o save para salvar os scripts que estão rodando e serão inicializados com a máquina
+pm2 save
