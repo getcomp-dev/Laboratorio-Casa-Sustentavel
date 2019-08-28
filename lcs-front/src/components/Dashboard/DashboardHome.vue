@@ -19,6 +19,16 @@
               </div>
             </div>
           </div>
+          <div class="row" id="Dados">
+            <div class="col" id="LeftDados">
+              Peso <br/>
+              Altura <br/>
+              Ano Nasc. <br/>
+            </div>
+            <div class="col" id="RightDados">
+              B
+            </div>
+          </div>
           <div id="CorDeRoupa">
             <div id="TopCorDeRoupa">Cor da Roupa</div>
             <div id="CorDeRoupaSuperior">
@@ -227,6 +237,16 @@ export default {
 #BottomSexo {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 30px;
+}
+
+#Dados {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+#LeftDados {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
 }
 
 #CorDeRoupa > div {
