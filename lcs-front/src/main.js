@@ -21,7 +21,11 @@ Vue.use(BootstrapVue)
 import socketio from 'socket.io-client'
 import VueSocketio from 'vue-socket.io'
 
-Vue.use(VueSocketio, socketio('http://localhost:3000', {autoConnect: false}), store)
+// Socket.io
+Vue.use(VueSocketio, socketio('http://localhost:8181', {
+  autoConnect: false,
+  reconnectionAttempts: 3
+}));
 
 Vue.config.productionTip = false
 

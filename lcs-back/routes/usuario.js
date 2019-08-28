@@ -12,7 +12,7 @@ router.post('/', function (req, res, next) {
         res.send({
             success: true,
             message: 'Usuário cadastrado',
-            Usuario: _.omit(usuario, 'senha')
+            Usuario: _.omit(usuario.get({ plain: true }), 'senha')
         });
     }).catch(function(err) {
         return next(err, req, res);
