@@ -23,7 +23,7 @@ function requireAuth (to, from, next) {
 }
 
 const routes = [
-  {path: '/', name: 'home', redirect: '/dashboard', beforeEnter: requireAuth},
+  {path: '/', name: 'home', redirect: '/login', beforeEnter: requireAuth},
   {path: '/login', name: 'login', component: Login},
   {path: '/application', name: 'application', component: Application, beforeEnter: requireAuth},
   {

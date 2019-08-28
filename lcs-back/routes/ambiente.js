@@ -37,7 +37,7 @@ router.get('/:id([0-9]+)', function (req, res, next) {
     });
 });
 
-router.post('/:id([0-9]+)/configuracao/add', function (req, res, next) {
+router.post('/:id([0-9]+)/configuracao', function (req, res, next) {
     models.Ambiente.findOne({
         where: {
             id: req.params.id
@@ -48,6 +48,31 @@ router.post('/:id([0-9]+)/configuracao/add', function (req, res, next) {
 
         let newConf = ambiente.configuracao;
         newConf.push({ 'nome': req.body.nome, 'valor': false});
+
+        return ambiente.updateAttributes({
+            configuracao: newConf
+        });
+    }).then(function () {
+        res.send({
+            success: true,
+            message: 'Configuracao adicionada'
+        });
+    }).catch(function (err) {
+        return next(err, req, res);
+    });
+});
+
+router.post('/:id([0-9]+)/configuracao/:confid([0-9]+)', function (req, res, next) {
+    models.Ambiente.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(function (ambiente) {
+        if (!ambiente)
+            throw new CustomError(400, 'Ambiente inválido');
+
+        let newConf = ambiente.configuracao;
+        newConf[req.params.confid].valor = !newConf[req.params.confid].valor;
 
         return ambiente.updateAttributes({
             configuracao: newConf

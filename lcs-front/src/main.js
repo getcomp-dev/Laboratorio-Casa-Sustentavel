@@ -18,6 +18,9 @@ import './assets/css/fontawesome-all.css'
 
 Vue.use(BootstrapVue)
 
+import ToggleButton from 'vue-js-toggle-button'
+Vue.use(ToggleButton)
+
 import socketio from 'socket.io-client'
 import VueSocketio from 'vue-socket.io'
 

@@ -4,17 +4,24 @@
       class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">{{ambiente.nome}}</h1>
     </div>
-    <h3>Configurações</h3>
+    <h3>Configurações Padrão</h3>
     <div class="card-columns">
-      <div class="card" v-for="conf in ambiente.configuracao">
+      <div class="card" v-for="(conf, index) in ambiente.configuracao" :key="index">
+        <div class="card-header">
+          {{conf.nome}}
+        </div>
         <div class="card-body">
-          <h5 class="card-title">{{conf.nome}}</h5>
-          <p class="card-text">{{conf.valor}}</p>
+          <p class="card-text text-center"><toggle-button v-model="conf.valor"
+                                              :labels="{checked: 'Aberto', unchecked: 'Fechado'}"
+                                              :width="100" :height="32"
+                                              v-on:change="confChange(index)"/></p>
         </div>
       </div>
-      <div class="card">
+      <div class="card" :key="98765">
+        <div class="card-header">
+          Nova configuração
+        </div>
         <div class="card-body">
-          <h5 class="card-title">Nova configuração</h5>
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Nome" v-model="form.nome">
             <div class="input-group-append">
@@ -49,6 +56,13 @@ export default {
         this.loadAmbiente(this.ambiente.id)
       }).catch(() => {}).then(() => {
         this.form.nome = undefined
+      })
+    },
+
+    confChange(index) {
+      ambienteService.updateConfiguracao(this.ambiente.id, index).then(() => {
+      }).catch(() => {}).then(() => {
+       console.log('Erro ao atualizar configuração')
       })
     },
 

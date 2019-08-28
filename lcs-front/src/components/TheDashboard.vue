@@ -5,6 +5,8 @@
     </div>
     <div id="content">
       <router-view></router-view>
+      <div id="pageBottom">
+      </div>
     </div>
   </div>
 </template>
@@ -35,6 +37,13 @@ export default {
 #content {
   margin: 32px auto 0px;
   width: 705px;
+}
+
+#pageBottom {
+  background-image: url("../assets/img/content_bot.png");
+  background-size: 100%;
+  width: 680px;
+  height: 177px;
 }
 
 </style>

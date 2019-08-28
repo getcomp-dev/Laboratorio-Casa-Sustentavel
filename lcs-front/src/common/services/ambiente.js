@@ -14,7 +14,13 @@ export default {
   },
 
   addConfiguracao (ambId, payload, config = {}) {
-    return Vue.axios.post(`/ambiente/${ambId}/configuracao/add`, payload, config)
+    return Vue.axios.post(`/ambiente/${ambId}/configuracao`, payload, config)
+      .then((response) => Promise.resolve(response.data))
+      .catch((error) => Promise.reject(error))
+  },
+
+  updateConfiguracao (ambId, confIndex, payload = {}, config = {}) {
+    return Vue.axios.post(`/ambiente/${ambId}/configuracao/${confIndex}`, payload, config)
       .then((response) => Promise.resolve(response.data))
       .catch((error) => Promise.reject(error))
   }
