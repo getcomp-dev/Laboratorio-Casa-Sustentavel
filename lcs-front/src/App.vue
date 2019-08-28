@@ -28,10 +28,10 @@ html {
 }
 
 body {
-  background-color: #e5cea3;
   background-image: url("./assets/img/bg.png");
   background-size: 100%;
   height: 100%;
+  background-color: #e5cea3 !important;
 }
 
 #app {
