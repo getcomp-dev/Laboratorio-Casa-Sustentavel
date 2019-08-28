@@ -6,30 +6,25 @@
       "database": "lcs_dev",
       "options": {
         "host": "127.0.0.1",
-        "dialect": "mysql",
-        "operatorsAliases": false
+        "dialect": "mysql"
       }
     },
     "jwt": {
       "secret": "S3cr3T"
     }
   },
-  "test": {
-    "database": {
-      "username": "root",
-      "password": "root",
-      "database": "lcs_test",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
-    }
-  },
   "production": {
     "database": {
       "username": "root",
       "password": "root",
-      "database": "lcs_production",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
+      "database": "lcs_dev",
+      "options": {
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+      }
+    },
+    "jwt": {
+      "secret": "S3cr3T"
     }
   }
 }

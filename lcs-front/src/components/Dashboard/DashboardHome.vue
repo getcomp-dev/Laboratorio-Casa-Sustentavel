@@ -97,15 +97,21 @@
               </label>
             </template>
           </div>
+
+          <button v-on:click="testPrint">Imprimir</button>
         </div>
       </div>
     </div>
+
+    <Printer ref="printer"></Printer>
   </div>
 </template>
 
 <script>
 import {VESTIMENTA} from '../../common/consts'
+import visitanteService from '../../common/services/visitante'
 import _ from 'lodash'
+import Printer from '../Common/Printer'
 
 const visitanteEmpty = {
   sexo: undefined,
@@ -120,14 +126,41 @@ const visitanteEmpty = {
 export default {
   name: 'DashboardHome',
 
+  components: {
+    Printer
+  },
+
   data () {
     return {
       VESTIMENTA: VESTIMENTA,
       visitante: _.clone(visitanteEmpty),
       success: undefined,
-      error: undefined
+      error: undefined,
+      printerRef: undefined
     }
-  }
+  },
+
+  methods: {
+    cleanAlerts () {
+      this.error = undefined
+      this.success = undefined
+    },
+
+    testPrint () {
+      this.$refs.printer.doCodePrint(98785)
+    },
+
+    registerVisitor () {
+      this.cleanAlerts()
+      visitanteService.create(this.visitante).then(response => {
+        this.success = response.visitante.etiqueta
+        this.visitante = _.clone(visitanteEmpty)
+      }).catch(error => {
+        this.error = true
+        window.console.log(error)
+      })
+    }
+  },
 }
 </script>
 
