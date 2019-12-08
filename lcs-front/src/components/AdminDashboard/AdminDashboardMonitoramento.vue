@@ -52,37 +52,53 @@
       </template>
       </tbody>
     </table>
+
+    <Paginator :pagination="pagination" v-if="logs && pagination" @change-page="changePage"></Paginator>
   </div>
 </template>
 
 <script>
 import logClimaticoService from '../../common/services/log-climatico'
 import ambienteService from '../../common/services/ambiente'
+import Paginator from '../Common/Paginator';
 
 export default {
   name: 'AdminDashboardMonitoramento',
 
+  components: {
+    Paginator
+  },
+
   data () {
     return {
       logs: null,
+      pagination: null,
       ambientes: null,
       loading: 0,
 
       ambiente: null,
+      page: 1,
       auto: false,
       autoInterval: null,
     }
   },
 
   methods: {
+    changePage({page}) {
+      this.page = page;
+      this.loadLogClimatico();
+    },
+
     loadLogClimatico () {
       this.loading++
       logClimaticoService.fetchAll({
         params: {
-          filterAmbiente: this.ambiente
+          filterAmbiente: this.ambiente,
+          page: this.page,
         }
       }).then(response => {
         this.logs = response.LogsClimaticos
+        this.pagination = response.pagination;
       }).catch(() => {
         console.log('Error')
       }).then(() => {

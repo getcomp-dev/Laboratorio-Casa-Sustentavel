@@ -1,11 +1,11 @@
 const models        = require('../models/index'),
     router          = require('express').Router(),
+    {paginate}     = require('../library/Helpers'),
     CustomError     = require('../library/CustomError');
 
-router.get('/', function (req, res, next) {
+router.get('/', async (req, res, next) => {
     const query = {
-        order: [['createdAt', 'DESC']],
-        limit: req.query.limit || 50,
+        order: [['createdAt', 'DESC'], ['id', 'DESC']],
         include: [ {model: models.Ambiente}, {model: models.LogClimaticoExterno}]
     };
 
@@ -15,11 +15,14 @@ router.get('/', function (req, res, next) {
         }
     }
 
-    models.LogClimatico.findAll(query).then(function (logsClimaticos) {
+    const pagination = await paginate(models.LogClimatico, query, req.query.page || 1, 20);
+
+    models.LogClimatico.findAll({...query, limit: pagination.per_page, offset: pagination.offset}).then(function (logsClimaticos) {
         res.send({
             success: true,
             message: 'Lista de Logs Climaticos',
-            LogsClimaticos: logsClimaticos
+            LogsClimaticos: logsClimaticos,
+            pagination
         });
     }).catch(function (error) {
         return next(error, req, res);
