@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
     Questionario.associate = function (models) {
         Questionario.hasMany(models.Questao, {
             foreignKey: {
-                name: 'Questionario',
+                name: 'questionarioId',
                 allowNull: false
             }
         });

@@ -61,7 +61,7 @@ export default {
 
     confChange(index) {
       ambienteService.updateConfiguracao(this.ambiente.id, index).then(() => {
-      }).catch(() => {}).then(() => {
+      }).catch(() => {
        console.log('Erro ao atualizar configuração')
       })
     },

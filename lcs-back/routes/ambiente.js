@@ -74,7 +74,7 @@ router.post('/:id([0-9]+)/configuracao/:confid([0-9]+)', function (req, res, nex
         let newConf = ambiente.configuracao;
         newConf[req.params.confid].valor = !newConf[req.params.confid].valor;
 
-        return ambiente.updateAttributes({
+        return ambiente.update({
             configuracao: newConf
         });
     }).then(function () {

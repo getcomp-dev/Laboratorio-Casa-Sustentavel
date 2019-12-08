@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
     Questao.associate = function (models) {
         Questao.hasMany(models.Resposta, {
             foreignKey: {
-                name: 'Questao',
+                name: 'questaoId',
                 allowNull: false
             }
         });

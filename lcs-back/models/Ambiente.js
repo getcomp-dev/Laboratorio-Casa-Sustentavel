@@ -26,15 +26,15 @@ module.exports = function (sequelize, DataTypes) {
     Ambiente.associate = function (models) {
         Ambiente.hasMany(models.Questionario, {
             foreignKey: {
-                name: 'Ambiente',
+                name: 'ambienteId',
                 allowNull: false
             }
         });
 
         Ambiente.hasMany(models.LogClimatico, {
             foreignKey: {
-                name: 'Ambiente',
-                allowNull: true
+                name: 'ambienteId',
+                allowNull: false
             }
         });
     };

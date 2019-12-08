@@ -8,6 +8,7 @@ import Dashboard from './components/TheDashboard'
 import DashboardHome from './components/Dashboard/DashboardHome'
 import AdminDashboard from './components/TheAdminDashboard'
 import AdminDashboardHome from './components/AdminDashboard/AdminDashboardHome'
+import AdminDashboardMonitoramento from './components/AdminDashboard/AdminDashboardMonitoramento'
 import AdminDashboardAmbiente from './components/AdminDashboard/AdminDashboardAmbiente'
 
 import { AUTH_LOGGED_OUT } from './vuex/mutation-types'
@@ -40,6 +41,7 @@ const routes = [
     beforeEnter: requireAuth,
     children: [
       {path: '', name: 'adminDashboard', component: AdminDashboardHome},
+      {path: 'monitoramento', name: 'adminMonitoramento', component: AdminDashboardMonitoramento},
       {path: 'ambiente/:id', name: 'ambiente', component: AdminDashboardAmbiente, beforeEnter: requireAuth},
     ]
   },

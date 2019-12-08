@@ -15,6 +15,7 @@
             <ul class="nav flex-column">
               <li class="nav-item">
                 <router-link :to="{ name: 'adminDashboard' }" class="nav-link"><i class="fas fa-home"></i> Dashboard</router-link>
+                <router-link :to="{ name: 'adminMonitoramento' }" class="nav-link"><i class="fas fa-thermometer-empty"></i> Monitoramento</router-link>
               </li>
             </ul>
             <h6 class="sidebar-heading px-3 mt-4 mb-1 text-muted">Ambientes</h6>

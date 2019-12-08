@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
     LogClimaticoExterno.associate = function (models) {
         LogClimaticoExterno.hasMany(models.LogClimatico, {
             foreignKey: {
-                name: 'LogClimaticoExterno',
+                name: 'logClimaticoExternoId',
                 allowNull: false
             }
         });

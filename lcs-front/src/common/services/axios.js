@@ -6,7 +6,7 @@ import VueAxios from 'vue-axios'
 export default function (Vue, store) {
   Vue.use(VueAxios, axios)
 
-  Vue.axios.defaults.baseURL = 'http://localhost:3000/'
+  Vue.axios.defaults.baseURL = 'http://localhost:3000/api/'
 
   Vue.axios.interceptors.request.use(function (config) {
     store.commit(HTTP_REQUEST_INCREMENT)

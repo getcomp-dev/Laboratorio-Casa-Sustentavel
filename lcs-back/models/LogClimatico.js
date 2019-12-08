@@ -25,7 +25,21 @@ module.exports = function (sequelize, DataTypes) {
     LogClimatico.associate = function (models) {
         LogClimatico.hasMany(models.Resposta, {
             foreignKey: {
-                name: 'LogClimatico',
+                name: 'logClimaticoId',
+                allowNull: false
+            }
+        });
+
+        LogClimatico.belongsTo(models.Ambiente,{
+            foreignKey: {
+                name: 'ambienteId',
+                allowNull: false
+            }
+        });
+
+        LogClimatico.belongsTo(models.LogClimaticoExterno,{
+            foreignKey: {
+                name: 'logClimaticoExternoId',
                 allowNull: false
             }
         });
