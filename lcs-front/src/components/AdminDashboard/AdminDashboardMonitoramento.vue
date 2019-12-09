@@ -32,7 +32,7 @@
         <th>Ambiente</th>
         <th>Temperatura</th>
         <th>Umidade</th>
-        <th>Luminosidade</th>
+        <th>Iluminância</th>
       </tr>
       </thead>
       <tbody>
@@ -41,8 +41,8 @@
           <td>{{log.createdAt | dateReformat}}</td>
           <td>{{log.Ambiente.nome}}</td>
           <td>{{log.temperatura}} ‎°C</td>
-          <td>{{log.umidade}}</td>
-          <td>{{log.luminosidade}}</td>
+          <td>{{log.umidade}} %</td>
+          <td>{{log.luminosidade}} lux</td>
         </tr>
       </template>
       <template v-else>
