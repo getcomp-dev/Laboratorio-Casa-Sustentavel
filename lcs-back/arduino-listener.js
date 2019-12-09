@@ -45,7 +45,9 @@ const amb = {
     B: 2,
     C: 3,
     D: 4,
-    E: 5
+    E: 5,
+    F: 6,
+    G: 7
 };
 
 // temperatura, luminosidade e umidade
@@ -55,7 +57,7 @@ port.on('data', (text) => {
     if(text.indexOf("\n") !== -1) {
         console.log("Data Received From Arduino: "+ accumulator);
 
-        const match = /([A-Z])-(\d+(\.\d+)?)-(\d+(\.\d+)?)-(\d+(\.\d+)?)/.exec(accumulator);
+        const match = /([A-Z]) - (\d+(\.\d+)?) - (\d+(\.\d+)?) - (\d+(\.\d+)?)/.exec(accumulator);
 
         if (!match) {
             logger.error('Mensagem inválida recebida.', {msg: accumulator});
