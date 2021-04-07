@@ -9,10 +9,10 @@
   "author": "Chico Rei",
   "license": "ISC",
   "dependencies": {
-    "node-thermal-printer": "^4.1.0",
-    "printer": "^0.2.2",
-    "socket.io": "^2.2.0",
-    "winston": "^3.2.1",
+    "node-thermal-printer": "^4.1.2",
+    "printer": "^0.4",
+    "socket.io": "^2.4.1",
+    "winston": "^3.3.3",
     "winston-daily-rotate-file": "^3.10.0"
   }
 }

@@ -6,17 +6,17 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "express-jwt": "^5.3.1",
+    "express-jwt": "^5.3.3",
     "jsonwebtoken": "^8.2.1",
-    "lodash": "^4.17.5",
-    "morgan": "^1.9.0",
-    "mysql2": "^1.5.3",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "mysql2": "^1.7.0",
     "password-hash": "^1.2.2",
     "random-js": "^1.0.8",
-    "sequelize": "^5.0.0",
-    "serialport": "^7.1.5",
-    "socket.io": "^2.1.0",
-    "winston": "^3.2.1",
-    "winston-daily-rotate-file": "^4.3.1"
+    "sequelize": "^5.22.4",
+    "serialport": "^9.0.0",
+    "socket.io": "^2.4.1",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.2"
   }
 }
