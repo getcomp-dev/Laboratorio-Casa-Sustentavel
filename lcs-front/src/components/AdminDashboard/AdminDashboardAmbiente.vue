@@ -4,7 +4,7 @@
       class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">{{ambiente.nome}}</h1>
     </div>
-    <h3>Configurações Padrão</h3>
+    <h3 class="mt-4 mb-3">Configurações Padrão</h3>
     <div class="card-columns">
       <div class="card" v-for="(conf, index) in ambiente.configuracao" :key="index">
         <div class="card-header">
@@ -31,6 +31,7 @@
         </div>
       </div>
     </div>
+    <h3 class="mt-4 mb-3">Questionário</h3>
   </div>
 </template>
 

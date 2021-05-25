@@ -65,7 +65,7 @@ app.use('/api', routerApi);
 
 // Return index.html
 app.use((req, res, next) => {
-    res.sendfile(path.join(__dirname, './dist', 'index.html'));
+    res.sendFile(path.join(__dirname, './dist', 'index.html'));
 });
 
 // Catch 500 and forward to error handler

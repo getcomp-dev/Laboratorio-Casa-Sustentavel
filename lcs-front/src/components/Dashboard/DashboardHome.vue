@@ -25,9 +25,6 @@
               Altura <br/>
               Ano Nasc. <br/>
             </div>
-            <div class="col" id="RightDados">
-              B
-            </div>
           </div>
           <div id="CorDeRoupa">
             <div id="TopCorDeRoupa">Cor da Roupa</div>
@@ -108,7 +105,7 @@
             </template>
           </div>
 
-          <button v-on:click="testPrint">Imprimir</button>
+          <button v-on:click="testPrint" v-if="false">Imprimir</button>
         </div>
       </div>
     </div>
