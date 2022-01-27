@@ -223,6 +223,7 @@ select {
 }
 
 .green-button:hover {
+  color: white;
   background-color: #9bde5b;
   border-color: #9bde5b;
   border-radius: 10px;
