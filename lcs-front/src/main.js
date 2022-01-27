@@ -5,6 +5,8 @@ import store from './vuex/store'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 
+import "./assets/css/global.css"
+
 sync(store, router)
 
 import axios from './common/services/axios'
