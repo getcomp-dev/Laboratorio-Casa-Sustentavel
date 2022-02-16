@@ -2,7 +2,7 @@
   "development": {
     "database": {
       "username": "root",
-      "password": "root",
+      "password": "251911",
       "database": "lcs_dev",
       "options": {
         "host": "127.0.0.1",
@@ -16,7 +16,7 @@
   "production": {
     "database": {
       "username": "root",
-      "password": "root",
+      "password": "251911",
       "database": "lcs_dev",
       "options": {
         "host": "127.0.0.1",

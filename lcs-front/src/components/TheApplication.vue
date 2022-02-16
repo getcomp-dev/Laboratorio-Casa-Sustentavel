@@ -1,7 +1,7 @@
 <template>
   <div class="TheApplication" id="labSustentavel">
     <div id="header">
-      <img src="../assets/img/logo.png">
+      <img src="../assets/logo.png">
     </div>
     <div id="content">
       <div id="appTop" class="row">
@@ -57,15 +57,14 @@ export default {
 <style scoped>
 
 #header {
-  background-color: rgba(151, 131, 96, 0.49);
   width: 100%;
-  margin-top: 35px;
-  height: 40px;
+  margin-top: 0px;
+  height: 0px;
 }
 
 #header img {
-  width: 350px;
-  height: 100px;
+  /*width: 350px;*/
+  /*height: 100px;*/
   position: absolute;
   top: 10px;
   left: 20px;
@@ -116,12 +115,12 @@ export default {
 }
 
 #codeType div {
-  font-family: futurabkbt, serif;
   font-size: 4rem;
-  background-color: #FEFEFE;
-  color: #4D5035;
   border-radius: 15px;
-  box-shadow: 15px 15px 5px rgba(80, 80, 80, 0.69);
+  color: white;
+  background-color: var(--LCSGreen);
+  border-color: var(--LCSGreen);
+  border-radius: 10px;
 }
 
 #codeType div:hover {
