@@ -1,24 +1,30 @@
 <template>
   <div class="TheApplication" id="labSustentavel">
     <div id="header">
-      <img src="../assets/logo.png">
+      <img src="../assets/logo.png" />
     </div>
     <div id="content">
       <div id="appTop" class="row">
         <div class="col-8" id="roomName">
-          {{ambiente.nome}}
+          {{ ambiente.nome }}
         </div>
         <div class="col text-right" id="userCode">
-          {{etiqueta}}
+          {{ etiqueta }}
         </div>
       </div>
 
       <div id="message">
-        <img src="../assets/img/seta.png"> Digite seu número de usuário
+        <img src="../assets/img/seta.png" /> Digite seu número de usuário
       </div>
 
       <div class="d-flex flex-wrap justify-content-center" id="codeType">
-        <div class="px-4 py-1 m-3" v-for="n in 10" v-on:click="codeClick(n-1)">{{n-1}}</div>
+        <div
+          class="px-4 py-1 m-3"
+          v-for="n in 10"
+          v-on:click="codeClick(n - 1)"
+        >
+          {{ n - 1 }}
+        </div>
       </div>
     </div>
     <div class="clearfix"></div>
@@ -27,35 +33,33 @@
 
 <script>
 export default {
-  name: 'TheApplication',
+  name: "TheApplication",
 
-  data () {
+  data() {
     return {
-      etiqueta: ''
-    }
+      etiqueta: "",
+    };
   },
 
   methods: {
-    codeClick (value) {
+    codeClick(value) {
       if (this.etiqueta.length === 4) {
-        this.etiqueta = ''+value
+        this.etiqueta = "" + value;
       } else {
-        this.etiqueta += value
+        this.etiqueta += value;
       }
-
-    }
+    },
   },
 
   computed: {
-    ambiente () {
-      return this.$store.state.auth.auth
-    }
-  }
-}
+    ambiente() {
+      return this.$store.state.auth.auth;
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 #header {
   width: 100%;
   margin-top: 0px;
@@ -78,7 +82,7 @@ export default {
 }
 
 #appTop {
-  color: rgba(13, 84, 94, 1.0);
+  color: rgba(13, 84, 94, 1);
   border-bottom-width: 2px !important;
   border-bottom-style: solid !important;
   border-color: rgb(14, 86, 96);
@@ -89,7 +93,7 @@ export default {
 #roomName {
   padding: 0px;
   padding-top: 37px;
-  font-size: 3.0rem;
+  font-size: 3rem;
 }
 
 #userCode {
@@ -101,7 +105,7 @@ export default {
 #message {
   font-family: futurabkbt, serif;
   font-size: 1.8rem;
-  color: rgba(13, 84, 94, 1.0);
+  color: rgba(13, 84, 94, 1);
   font-weight: 200;
   margin-right: -15px;
   margin-left: -15px;
@@ -124,8 +128,7 @@ export default {
 }
 
 #codeType div:hover {
-  background-color: #4D5035;
-  color: #FEFEFE;
+  background-color: var(--LCSGreenDarker);
+  color: #fefefe;
 }
-
 </style>

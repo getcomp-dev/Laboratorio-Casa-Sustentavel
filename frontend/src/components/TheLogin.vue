@@ -224,8 +224,8 @@ select {
 
 .green-button:hover {
   color: white;
-  background-color: #9bde5b;
-  border-color: #9bde5b;
+  background-color: var(--LCSGreenLighter);
+  border-color: var(--LCSGreenLighter);
   border-radius: 10px;
 }
 </style>
