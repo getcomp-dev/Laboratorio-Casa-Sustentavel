@@ -1,7 +1,7 @@
 <template>
   <div class="TheApplication" id="labSustentavel">
     <div id="header">
-      <img src="../assets/logo.png" />
+      <img src="../assets/img/logo.png" />
     </div>
     <div id="content">
       <div id="appTop" class="row">

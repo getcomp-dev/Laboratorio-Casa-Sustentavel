@@ -3,7 +3,7 @@
     <form class="form-signin" v-on:submit.prevent="doLogin">
       <img
         class="mb-4"
-        src="../assets/logo.png"
+        src="../assets/img/logo.png"
         alt="Logo LCS"
         width="125"
         height="125"
