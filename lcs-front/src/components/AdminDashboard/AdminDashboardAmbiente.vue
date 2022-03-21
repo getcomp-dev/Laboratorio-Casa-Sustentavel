@@ -32,6 +32,51 @@
       </div>
     </div>
     <h3 class="mt-4 mb-3">Questionário</h3>
+    <div class="card">
+      <div class="card" v-for="(element,index) in questions" :key="index">
+        
+        
+        <div class="card-header">
+          {{element.question}}
+          <button class="btn btn-primary" type="button">Editar</button>
+          <button class="btn btn-danger" type="button">Excluir</button>
+        </div>
+        <div class="card-body">
+          <ul v-for="(item,index) in element.sugestions" :key="index" :class="select ? true : ''" @click="selectResponse">
+            <div class="card">
+                <div class="card-header">
+                  {{item.index}}
+                  {{item.sugestion}}
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-danger" type="button">Excluir</button>
+                  <button class="btn btn-primary" type="button">Editar</button>
+                </div>
+            </div>
+
+          </ul>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Opção" v-model="form.nome">
+            <div class="input-group-append">
+              <button class="btn btn-success" type="button">Adicionar opção</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+          Nova Pergunta
+        </div>
+        <div class="card-body" >
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Nome" v-model="form.nome">
+            <div class="input-group-append">
+              <button class="btn btn-success" type="button">Adicionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -47,7 +92,82 @@ export default {
       ambiente: undefined,
       form: {
         nome: undefined
-      }
+      },
+      questions:[
+        {
+          question:"Qual a sua sensação com relação à temperatura?",
+          sugestions:[
+            {sugestion:'+3 Muito Quente'},
+            {sugestion:'+2 Quente'},
+            {sugestion:'+1 Levemente Quente',},
+            {sugestion:'-1 Levemente Frio',},
+            {sugestion:'-2 Frio',},
+            {sugestion:'-3 Muito Frio',}
+          ]
+        },
+        {
+          question:"Perunta 2' ?",
+          sugestions:[
+            {sugestion:'+3 Muito Quente'},
+            {sugestion:'+2 Quente'},
+            {sugestion:'+1 Levemente Quente',},
+            {sugestion:'-1 Levemente Frio',},
+            {sugestion:'-2 Frio',},
+            {sugestion:'-3 Muito Frio',}
+            
+          ]
+          
+        },
+        {
+          question:"pergunta 3?",
+          sugestions:[
+            {sugestion:'+3 Muito Quente'},
+            {sugestion:'+2 Quente'},
+            {sugestion:'+1 Levemente Quente',},
+            {sugestion:'-1 Levemente Frio',},
+            {sugestion:'-2 Frio',},
+            {sugestion:'-3 Muito Frio',}
+            
+            
+          ]
+          
+        },
+        {
+          question:"Pergunta 4?",
+          sugestions:[
+            {sugestion:'+3 Muito Quente'},
+            {sugestion:'+2 Quente'},
+            {sugestion:'+1 Levemente Quente',},
+            {sugestion:'-1 Levemente Frio',},
+            {sugestion:'-2 Frio',},
+            {sugestion:'-3 Muito Frio',}
+            
+            
+          ]
+          
+        },
+        {
+          question:"Pergunta 5?",
+          sugestions:[
+            {sugestion:'+3 Muito Quente'},
+            {sugestion:'+2 Quente'},
+            {sugestion:'+1 Levemente Quente',},
+            {sugestion:'-1 Levemente Frio',},
+            {sugestion:'-2 Frio',},
+            {sugestion:'-3 Muito Frio',}
+            
+          ]
+          
+        },
+        {
+          question:"Pergunta 6?",
+          sugestions:[
+            {sugestion:'+3 Muito Quente'},
+            {sugestion:'+2 Quente'}
+          ]
+          
+        }
+      ]
     }
   },
 
@@ -76,7 +196,20 @@ export default {
       }).then(() => {
         this.$store.commit(COMPONENT_LOADED)
       })
+    },
+    addPergunta(){
+      
+    },
+    addQuestao(){
+
+    },
+    removePergunta(){
+
+    },
+    removeQuestao(){
+
     }
+
   },
 
   created () {
