@@ -1,49 +1,36 @@
 <template>
   <div class="TheDashboard" id="labSustentavel">
     <div id="header">
-      <img src="../assets/img/logo.png">
+      <img src="../assets/img/logo.png" />
     </div>
     <div id="content">
       <router-view></router-view>
-      <div id="pageBottom">
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TheDashboard'
-}
+  name: "TheDashboard",
+};
 </script>
 
 <style scoped>
-
 #header {
-  background-color: rgba(151, 131, 96, 0.49);
-  width: 100%;
-  margin-top: 35px;
-  height: 40px;
+  background-color: #dfdfdf;
+  width: 100vw;
+  height: 100px;
 }
 
 #header img {
-  width: 350px;
   height: 100px;
+  width: auto;
   position: absolute;
-  top: 10px;
-  left: 20px;
+  margin-left: 20px;
 }
 
 #content {
   margin: 32px auto 0px;
   width: 705px;
 }
-
-#pageBottom {
-  background-image: url("../assets/img/content_bot.png");
-  background-size: 100%;
-  width: 680px;
-  height: 177px;
-}
-
 </style>
