@@ -1,18 +1,20 @@
 <template>
   <div class="printer_bar" v-on:click="printerClicked">
     <button class="btn" :class="actualState.type" type="submit">
-      <span class="badge" v-if="commandsProcessing > 0">{{commandsProcessing}}</span>
+      <span class="badge" v-if="commandsProcessing > 0">{{
+        commandsProcessing
+      }}</span>
       <span class="fa fa-print"></span>
-      {{showingState ? actualState.nome : ''}}
+      {{ showingState ? actualState.nome : "" }}
     </button>
   </div>
 </template>
 
 <script>
-import _ from 'lodash';
+import _ from "lodash";
 
 export default {
-  name: 'Printer',
+  name: "Printer",
 
   data() {
     return {
@@ -20,73 +22,73 @@ export default {
       showingState: true,
       printerState: 0,
       printStates: {
-        0: {nome: 'Desconectada', type:'btn-danger'},
-        1: {nome: 'Conectando...', type:'btn-info'},
-        2: {nome: 'Reconectando...', type:'btn-info'},
-        3: {nome: 'Conectada', type:'btn-success'},
-        4: {nome: 'Erro', type:'btn-warning'},
-      }
+        0: { nome: "Desconectada", type: "btn-danger" },
+        1: { nome: "Conectando...", type: "btn-info" },
+        2: { nome: "Reconectando...", type: "btn-info" },
+        3: { nome: "Conectada", type: "btn-success" },
+        4: { nome: "Erro", type: "btn-warning" },
+      },
     };
   },
 
   computed: {
     actualState() {
-      return this.printStates[this.printerState]
-    }
+      return this.printStates[this.printerState];
+    },
   },
 
   methods: {
-    printerClicked () {
-      if(this.printerState !== 3) {
-        this.$socket.open()  // Tenta reconectar ao clicar
+    printerClicked() {
+      if (this.printerState !== 3) {
+        this.$socket.open(); // Tenta reconectar ao clicar
       }
 
-      this.showState()
+      this.showState();
     },
 
-    showState () {
-      this.showingState = true
-      this.hideState()
+    showState() {
+      this.showingState = true;
+      this.hideState();
     },
 
-    hideState: _.debounce(function () {
-      this.showingState = false
+    hideState: _.debounce(function() {
+      this.showingState = false;
     }, 3000),
 
-    printerPrint (cb) {
-      if(this.printerState !== 3) {
-        window.console.log('Erro! A impressora está desconectada!');
+    printerPrint(cb) {
+      if (this.printerState !== 3) {
+        window.console.log("Erro! A impressora está desconectada!");
         return;
       }
 
       cb((data) => {
         this.commandsProcessing += 1;
-        this.$socket.emit('doPrint', data);
+        this.$socket.emit("doPrint", data);
       });
     },
 
-    doCodePrint (code) {
+    doCodePrint(code) {
       this.printerPrint((send) => {
-        send({'template': 'code', 'data': code});
+        send({ template: "code", data: code });
       });
     },
 
-    doResumePrint (data) {
+    doResumePrint(data) {
       this.printerPrint((send) => {
-        send({'template': 'resume', data});
+        send({ template: "resume", data });
       });
     },
   },
 
   watch: {
-    'printerState' () {
+    printerState() {
       this.showState();
-    }
+    },
   },
 
-  sockets:{
+  sockets: {
     // Printer events
-    printStatus: function (data) {
+    printStatus: function(data) {
       this.commandsProcessing -= 1;
       if (data.success) {
         window.console.log(`Sucesso! ${data.msg}`);
@@ -96,40 +98,40 @@ export default {
     },
 
     // Conection State
-    disconnect: function(){
+    disconnect: function() {
       this.printerState = 0;
     },
-    connecting: function(){
+    connecting: function() {
       this.printerState = 1;
     },
-    reconnecting: function(){
+    reconnecting: function() {
       this.printerState = 2;
     },
-    connect: function(){
+    connect: function() {
       this.printerState = 3;
     },
-    reconnect: function(){
+    reconnect: function() {
       this.printerState = 3;
     },
-    error: function(){
+    error: function() {
       this.printerState = 4;
     },
-    connect_error: function(){
+    connect_error: function() {
       this.printerState = 4;
     },
-    reconnect_error: function(){
+    reconnect_error: function() {
       this.printerState = 4;
-    }
+    },
   },
 
-  created () {
-    this.$socket.open()
+  created() {
+    this.$socket.open();
   },
 
-  beforeDestroy () {
-    this.$socket.close()
-  }
-}
+  beforeDestroy() {
+    this.$socket.close();
+  },
+};
 </script>
 
 <style scoped>
@@ -145,6 +147,15 @@ export default {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
   border-bottom-right-radius: 0;
+  background-color: #f7d263;
+  border-color: #f7d263;
+}
+.printer_bar > button:hover {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: var(--LCSGreenLighter);;
+  border-color: var(--LCSGreenLighter);;
 }
 
 .badge {
