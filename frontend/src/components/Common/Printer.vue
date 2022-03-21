@@ -135,15 +135,15 @@ export default {
 <style scoped>
 .printer_bar {
   position: fixed;
-  top: 36px;
+  top: 0;
   right: 0;
   width: auto;
-  border-top: 0;
   z-index: 998;
 }
 
 .printer_bar > button {
   border-top-right-radius: 0;
+  border-top-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
