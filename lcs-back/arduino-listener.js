@@ -2,12 +2,15 @@ const winston = require('winston');
 require('winston-daily-rotate-file');
 const models = require('./models/index');
 
+
+
+
 const logger = winston.createLogger({
     format: winston.format.json(),
     transports: [
         new winston.transports.Console(),
         new (winston.transports.DailyRotateFile)({
-            filename: 'storage/logs/arduino-listener-%DATE%.log',
+            filename: 'storage/logs/logsnovos/arduino-listener-%DATE%.log',
         })
     ]
 
@@ -37,9 +40,10 @@ const insertLog = async (ambienteId, temperatura, luminosidade, umidade) => {
 };
 
 const SerialPort = require('serialport');
-const port = new SerialPort('COM4');
+const port = new SerialPort('COM6');
 
 let accumulator = '';
+let dados = '';
 const amb = {
     A: 1,
     B: 2,
@@ -49,31 +53,73 @@ const amb = {
     F: 6,
     G: 7
 };
-
 // temperatura, luminosidade e umidade
 port.on('data', (text) => {
     accumulator += text;
 
-    if(text.indexOf("\n") !== -1) {
-        console.log("Data Received From Arduino: "+ accumulator);
+    // console.log(accumulator);
+    // logger.error({accumulator})
+    
+    if(accumulator.includes("Entrando no modo sleep")){
+        var data = new Date();
+        accumulator+=data.toISOString();
+        accumulator+="\n";
+        accumulator= accumulator.split("\r")
+        // console.log(accumulator);
+        // dados += accumulator;
+        //Acordando do Sleep
+        // Fazendo medidas dos sensores:
+        //Temperatura do Quarto 1 = 
+        //Luminosidade do Quarto 1 = 
+        //Umidade Quarto 1 = 
+        //Entrando no modo sleep
+        // accumulator="";
+        // console.log(accumulator.length);
+        if(accumulator.length == 7){
+            var dado_temperatura =accumulator[2];
+            var dado_luminosidade =accumulator[3];
+            var dado_Umidade =accumulator[4];
+            dado_temperatura = dado_temperatura.replace("Temperatura do Quarto 1 = ","");
+            dado_luminosidade = dado_luminosidade.replace("Luminosidade do Quarto 1 = ","");
+            dado_Umidade = dado_Umidade.replace("Umidade Quarto 1 = ","");
 
-        const match = /([A-Z]) - (\d+(\.\d+)?) - (\d+(\.\d+)?) - (\d+(\.\d+)?)/.exec(accumulator);
+            dado_temperatura = dado_temperatura.replace(" ºC","");
+            dado_luminosidade = dado_luminosidade.replace(" ºlux","");
+            dado_Umidade = dado_Umidade.replace(" %","");
 
-        if (!match) {
-            logger.error('Mensagem inválida recebida.', {msg: accumulator});
-        } else {
-            console.log('Ambiente: '+match[1]);
-            console.log('Temperatura: '+match[2]);
-            console.log('Luminosidade: '+match[4]);
-            console.log('Umidade: '+match[6]);
+            dado_temperatura = dado_temperatura.replace(" ��C","");
+            dado_luminosidade = dado_luminosidade.replace(" ��lux","");
 
-            insertLog(amb[match[1]], parseFloat(match[2]), parseFloat(match[4]), parseFloat(match[6])).catch(error => {
-                logger.error('Erro ao inserir log.', {error, match});
-            });
+            console.log(dado_temperatura);
+            console.log(dado_luminosidade);
+            console.log(dado_Umidade);
+            insertLog(01,dado_temperatura, dado_luminosidade, dado_Umidade).catch(error => {
+                         logger.error('Erro ao inserir log.', {error, match});
+                    });
         }
-
-        accumulator = '';
+        // console.log(accumulator);
+        accumulator = "";
     }
+
+
+    // if(text.indexOf("\n") !== -1) {
+    //     console.log("Data Received From Arduino: "+ accumulator);
+    //     const match = /([A-Z]) - (\d+(\.\d+)?) - (\d+(\.\d+)?) - (\d+(\.\d+)?)/.exec(accumulator);
+    //     if (!match) {
+    //         logger.error('Mensagem inválida recebida.', {msg: accumulator});
+    //     } else {
+    //         console.log('Ambiente: '+match[1]);
+    //         console.log('Temperatura: '+match[2]);
+    //         console.log('Luminosidade: '+match[4]);
+    //         console.log('Umidade: '+match[6]);
+
+    //         insertLog(amb[match[1]], parseFloat(match[2]), parseFloat(match[4]), parseFloat(match[6])).catch(error => {
+    //             logger.error('Erro ao inserir log.', {error, match});
+    //         });
+    //     }
+
+    //     accumulator = '';
+    // }
 });
 
 port.on('open', () => {

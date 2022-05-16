@@ -6,7 +6,6 @@ const fs = require('fs'),
     basename = path.basename(module.filename),
     config = require(__dirname + '/../config/index')['database'],
     db = {};
-
 const sequelize = new Sequelize(config.database, config.username, config.password, config.options);
 
 fs

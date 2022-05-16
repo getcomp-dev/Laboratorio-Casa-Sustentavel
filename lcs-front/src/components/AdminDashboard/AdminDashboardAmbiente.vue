@@ -105,68 +105,6 @@ export default {
             {sugestion:'-3 Muito Frio',}
           ]
         },
-        {
-          question:"Perunta 2' ?",
-          sugestions:[
-            {sugestion:'+3 Muito Quente'},
-            {sugestion:'+2 Quente'},
-            {sugestion:'+1 Levemente Quente',},
-            {sugestion:'-1 Levemente Frio',},
-            {sugestion:'-2 Frio',},
-            {sugestion:'-3 Muito Frio',}
-            
-          ]
-          
-        },
-        {
-          question:"pergunta 3?",
-          sugestions:[
-            {sugestion:'+3 Muito Quente'},
-            {sugestion:'+2 Quente'},
-            {sugestion:'+1 Levemente Quente',},
-            {sugestion:'-1 Levemente Frio',},
-            {sugestion:'-2 Frio',},
-            {sugestion:'-3 Muito Frio',}
-            
-            
-          ]
-          
-        },
-        {
-          question:"Pergunta 4?",
-          sugestions:[
-            {sugestion:'+3 Muito Quente'},
-            {sugestion:'+2 Quente'},
-            {sugestion:'+1 Levemente Quente',},
-            {sugestion:'-1 Levemente Frio',},
-            {sugestion:'-2 Frio',},
-            {sugestion:'-3 Muito Frio',}
-            
-            
-          ]
-          
-        },
-        {
-          question:"Pergunta 5?",
-          sugestions:[
-            {sugestion:'+3 Muito Quente'},
-            {sugestion:'+2 Quente'},
-            {sugestion:'+1 Levemente Quente',},
-            {sugestion:'-1 Levemente Frio',},
-            {sugestion:'-2 Frio',},
-            {sugestion:'-3 Muito Frio',}
-            
-          ]
-          
-        },
-        {
-          question:"Pergunta 6?",
-          sugestions:[
-            {sugestion:'+3 Muito Quente'},
-            {sugestion:'+2 Quente'}
-          ]
-          
-        }
       ]
     }
   },
